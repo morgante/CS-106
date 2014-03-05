@@ -8,10 +8,9 @@ def make_entries(length, bits):
 
 	return entries
 
-def test(size, max_length, values):
+def test(entries):
 	table = []
 	faults = 0
-	entries = make_entries(max_length, values)
 
 	for i in entries:
 		if i not in table:
@@ -23,15 +22,15 @@ def test(size, max_length, values):
 
 	return faults
 
-
 size = 4
 max_length = 15
 values = 15
 
 samples = []
 
-for l in range(0,10000):
-	faults = test(size, max_length, values)
+for l in range(0,100000):
+	entries = make_entries(max_length, values)
+	faults = test(entries)
 
 	samples.append(faults)
 
